@@ -1,9 +1,7 @@
 package com.peterpreneur.budgetingapp.security;
 
-import java.util.Collection;
 import java.util.Set;
 
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.peterpreneur.budgetingapp.domain.Authority;
@@ -16,7 +14,7 @@ public class SecurityUser extends User implements UserDetails{
 	 */
 	private static final long serialVersionUID = -7841454436374030328L;
 
-	public SecurityUser(){}
+	//public SecurityUser(){}
 
 	public SecurityUser(User user)
 	{
@@ -44,8 +42,7 @@ public class SecurityUser extends User implements UserDetails{
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -62,5 +59,4 @@ public class SecurityUser extends User implements UserDetails{
 	public boolean isEnabled() {
 		return true;
 	}
-
 }
