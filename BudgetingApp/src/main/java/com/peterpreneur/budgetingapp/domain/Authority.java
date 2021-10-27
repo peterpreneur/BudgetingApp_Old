@@ -10,14 +10,15 @@ import org.springframework.security.core.GrantedAuthority;
 @Entity
 public class Authority implements GrantedAuthority
 {
-
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 7778373982194595479L;
 	private Long id;
 	private String authority;
 	private User user;
 	
-	@Id
-	@GeneratedValue
+	@Id @GeneratedValue
 	public Long getId() {
 		return id;
 	}
@@ -31,7 +32,7 @@ public class Authority implements GrantedAuthority
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-
+	
 	@ManyToOne
 	public User getUser() {
 		return user;
@@ -39,4 +40,6 @@ public class Authority implements GrantedAuthority
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	
 }

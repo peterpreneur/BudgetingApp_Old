@@ -14,16 +14,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Category {
+public class Category 
+{
 	private Long id;
 	private BigDecimal budget;
 	private String name;
 	private Date startDate;
 	private Date endDate;
 	private Group group;
-	private Set<Transaction> transactions = new TreeSet<>();
+	private Set<Transaction> transaction = new TreeSet<>();
 	
-
 	@Id @GeneratedValue
 	public Long getId() {
 		return id;
@@ -31,21 +31,18 @@ public class Category {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
 	public BigDecimal getBudget() {
 		return budget;
 	}
 	public void setBudget(BigDecimal budget) {
 		this.budget = budget;
 	}
-	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	//@Column(name="start_date")
 	public Date getStartDate() {
 		return startDate;
@@ -53,7 +50,8 @@ public class Category {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	
+
+	//@Column(name="end_date")
 	public Date getEndDate() {
 		return endDate;
 	}
@@ -61,19 +59,24 @@ public class Category {
 		this.endDate = endDate;
 	}
 	
+	
 	@ManyToOne
 	public Group getGroup() {
 		return group;
 	}
+
 	public void setGroup(Group group) {
 		this.group = group;
 	}
+
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy = "category")
+	public Set<Transaction> getTransaction() {
+		return transaction;
+	}
+
+	public void setTransaction(Set<Transaction> transaction) {
+		this.transaction = transaction;
+	}
+	 
 	
-	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY, mappedBy="category")
-	public Set<Transaction> getTransactions() {
-		return transactions;
-	}
-	public void setTransactions(Set<Transaction> transactions) {
-		this.transactions = transactions;
-	}
 }

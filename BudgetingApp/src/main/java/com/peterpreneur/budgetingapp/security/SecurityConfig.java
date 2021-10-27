@@ -9,30 +9,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
+
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
-	
+
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception 
-	{
-		//auth.inMemoryAuthentication().withUser("peter@peter.com").password("pass").roles("USER");
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService);
 	}
 	
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable()
-			.authorizeRequests()
-				.antMatchers("/js/*","/css/*").permitAll()
-//				.antMatchers("/admin/*").hasRole("ADMIN")
-				.antMatchers("/**").hasRole("USER")
-				.and()
-			.formLogin()
-				.loginPage("/login")
-				.defaultSuccessUrl("/budget")
-				.permitAll().and()
-			.logout()
-				.logoutSuccessUrl("/")
-				.permitAll();
-	}
 }

@@ -18,8 +18,8 @@ import javax.persistence.OneToMany;
 public class Budget {
 	private Long id;
 	private String name;
-	private Set<User> users = new HashSet<>();	
-	private Set<Group> groups = new TreeSet<>();	
+	private Set<User> users = new HashSet<>();
+	private Set<Group> groups = new TreeSet<>();
 	
 	@Id @GeneratedValue
 	public Long getId() {
@@ -40,11 +40,11 @@ public class Budget {
 	public Set<User> getUser() {
 		return users;
 	}
-	public void setUser(Set<User> user) {
+	public void setUser(Set<User> users) {
 		this.users = users;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="budget")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "budget")
 	public Set<Group> getGroups() {
 		return groups;
 	}

@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Transaction {
+	
 	private Long id;
 	private Date date;
 	private BigDecimal total;
@@ -33,7 +34,7 @@ public class Transaction {
 	public BigDecimal getTotal() {
 		return total;
 	}
-	public void setType(BigDecimal total) {
+	public void setTotal(BigDecimal total) {
 		this.total = total;
 	}
 	public String getType() {
@@ -53,9 +54,9 @@ public class Transaction {
 	public Category getCategory() {
 		return category;
 	}
+
 	public void setCategory(Category category) {
 		this.category = category;
-	}
-	
-	
+	}	 
+
 }
