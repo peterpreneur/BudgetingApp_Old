@@ -41,8 +41,8 @@ public class LoginController
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String postRegister(@ModelAttribute User user, ModelMap model)
 	{
-		if (!StringUtils.hasLength(user.getPassword())
-				&& !StringUtils.hasLength(user.getConfirmPassword()))
+		if (StringUtils.hasLength(user.getPassword())
+				&& StringUtils.hasLength(user.getConfirmPassword()))
 		{
 			if(!user.getPassword().equals(user.getConfirmPassword())) {
 				model.put("error","Passwords don't match");
@@ -50,8 +50,8 @@ public class LoginController
 			}
 		}
 		
-		if (StringUtils.hasLength(user.getPassword()) ||
-				StringUtils.hasLength(user.getConfirmPassword()))
+		if (!StringUtils.hasLength(user.getPassword()) ||
+				!StringUtils.hasLength(user.getConfirmPassword()))
 		{
 			model.put("error", "You must choose a password");
 			return "register";			
