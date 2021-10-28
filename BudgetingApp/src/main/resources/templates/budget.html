@@ -1,9 +1,26 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Your Budgets</title>
-	</head>
-	<body>This is where the budget will be listed once this code is
-		properly implemented.
-	</body>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Your Budgets</title>
+<script th:include="fragments/header :: headerScripts" th:remove="tag"></script>
+</head>
+<body>
+	<div class="card">
+		<div class="card-header">
+			<div class="row">
+				<div class="h4 col-10">Your Budgets
+				</div>
+				<div class="h2 col-2">
+					<a href="#" class="list-group-item list-group-item-action">+</a>
+				</div>
+			</div>
+		</div>
+		<div class="list-group list-group-flush">
+			<a href="#" class="list-group-item list-group-item-action">An
+				item</a> <a class="list-group-item list-group-item-action">A second
+				item</a> <a class="list-group-item list-group-item-action">A third
+				item</a>
+		</div>
+	</div>
+</body>
 </html>
