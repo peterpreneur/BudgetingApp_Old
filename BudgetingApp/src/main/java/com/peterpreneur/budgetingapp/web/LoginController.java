@@ -17,4 +17,14 @@ public class LoginController {
 		
 		return "login";
 	}
+	
+	@RequestMapping(value="/register", method=RequestMethod.GET)
+	public String getRegister(ModelMap model)
+	{
+		User user = new User();
+		model.put("user", user);
+		
+		return "register";
+	}
+	
 }
