@@ -1,5 +1,6 @@
 package com.peterpreneur.budgetingapp.domain;
 
+import java.beans.Transient;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
@@ -21,6 +22,7 @@ public class User
 	private Long id;
 	private String username;
 	private String password;
+	private String confirmPassword;
 	private Set<Budget> budgets = new TreeSet<>(); 
 	private Set<Authority> authorities = new HashSet<>();
 	
@@ -42,6 +44,14 @@ public class User
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	@Transient
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")

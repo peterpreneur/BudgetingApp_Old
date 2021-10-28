@@ -4,7 +4,12 @@
 <title>Please Register</title>
 <script th:include="fragments/header :: headerScripts" th:remove="tag"></script>
 <script type="text/javascript">
-	
+	$(function(){
+		if ($("#errorMsg").text() != "")
+		{
+			$("#errorMsg").removeClass("d-none");
+		}
+	})	
 </script>
 
 </head>
@@ -12,23 +17,22 @@
 	<div class="card">
 		<h4 class="card-header">Please Register Below</h4>
 		<div class="card-body">
-			<form>
+			<div class="alert alert-danger d-none" role="alert" th:text="${error}"></div>
+			<form action="" method="post">
 				<div class="mb-3">
-					<label for="exampleInputEmail1" class="form-label">Email
-						address</label> <input type="email" class="form-control"
-						id="exampleInputEmail1" aria-describedby="emailHelp">
-					<div id="emailHelp" class="form-text">We'll never share your
+					<label for="exampleInputEmail1" class="form-label">Email address</label> 
+					<input type="email" class="form-control" th:field="${user.username}"
+						aria-describedby="emailHelp">
+					<div id="emailHelp" class="form-text text-muted">We'll never share your
 						email with anyone else.</div>
 				</div>
 				<div class="mb-3">
 					<label for="exampleInputPassword1" class="form-label">Password</label>
-					<input type="password" class="form-control"
-						id="exampleInputPassword1">
+					<input type="password" class="form-control" th:field="${user.password}">
 				</div>
-				<div class="mb-3 form-check">
-					<input type="checkbox" class="form-check-input" id="exampleCheck1">
-					<label class="form-check-label" for="exampleCheck1">Check
-						me out</label>
+				<div class="mb-3">
+					<label for="exampleInputPassword2" class="form-label">Confirm Password</label>
+					<input type="password" class="form-control" th:field="${user.confirmPassword}">
 				</div>
 				<button type="submit" class="btn btn-primary">Register</button>
 			</form>
