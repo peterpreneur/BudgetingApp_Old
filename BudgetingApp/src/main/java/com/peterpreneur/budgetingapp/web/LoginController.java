@@ -50,7 +50,8 @@ public class LoginController
 			}
 		}
 		
-		if (StringUtils.hasLength(user.getPassword()))
+		if (StringUtils.hasLength(user.getPassword()) ||
+				StringUtils.hasLength(user.getConfirmPassword()))
 		{
 			model.put("error", "You must choose a password");
 			return "register";			
